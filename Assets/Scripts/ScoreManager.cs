@@ -1,64 +1,49 @@
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
     private int playerPts = 0;
     private int opponentPts = 0;
-    private int playerPtsMatch = 0;
-    private int opponentPtsMatch = 0;
-    private int WINNING_MATCH_SCORE = 12; // Missing semicolon fixed
+
+    private int WINNING_GAME_SCORE = 12; // Missing semicolon fixed
+
+    // UI objects
+    public GameObject scorePanel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         resetPlayerGamePts();
         resetOpponentGamePts();
-        resetPlayerPtsMatch();
-        resetOpponentPtsMatch();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // For testing — you can remove or replace with actual game events
-        if (Input.GetKeyDown(KeyCode.P))
+
+    }
+
+    public void IncreasePlayerPtsGame(int bonus_pts)
+    {
+        playerPts += bonus_pts;
+        Debug.Log("Player Wins the Match and Game Points: " + playerPts);
+
+        if (playerPts >= WINNING_GAME_SCORE)
         {
-            IncreasePlayerPtsMatch(1);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            IncreaseOpponentPtsMatch(1);
+            Debug.Log("Player Wins the Game!");
         }
     }
 
-    public int IncreasePlayerPtsMatch(int bonus_pts)
+    public void IncreaseOpponentPtsGame(int bonus_pts)
     {
-        playerPtsMatch += bonus_pts;
-        Debug.Log("Player Match Points: " + playerPtsMatch);
+        opponentPts += bonus_pts;
+        Debug.Log("Opponent Win the Match and Current Game Points: " + opponentPts);
 
-        if (playerPtsMatch >= WINNING_MATCH_SCORE)
+        if (opponentPts >= WINNING_GAME_SCORE)
         {
-            Debug.Log("Player Wins the Match!");
-            resetPlayerPtsMatch();
-            resetOpponentPtsMatch();
+            Debug.Log("Opponent Wins the Game!");
         }
-
-        return playerPtsMatch;
-    }
-
-    public int IncreaseOpponentPtsMatch(int bonus_pts)
-    {
-        opponentPtsMatch += bonus_pts;
-        Debug.Log("Opponent Match Points: " + opponentPtsMatch);
-
-        if (opponentPtsMatch >= WINNING_MATCH_SCORE)
-        {
-            Debug.Log("Opponent Wins the Match!");
-            resetPlayerPtsMatch();
-            resetOpponentPtsMatch();
-        }
-
-        return opponentPtsMatch;
     }
 
     public void resetPlayerGamePts()
@@ -71,13 +56,10 @@ public class ScoreManager : MonoBehaviour
         opponentPts = 0;
     }
 
-    public void resetPlayerPtsMatch()
-    {
-        playerPtsMatch = 0;
-    }
 
-    public void resetOpponentPtsMatch()
+    public void UpdateScorePanel()
     {
-        opponentPtsMatch = 0;
+        Debug.Log($"Score: {playerPts} - {opponentPts}");
+        scorePanel.GetComponent<TextMeshProUGUI>().text = $"Score: {playerPts} - {opponentPts}";
     }
 }

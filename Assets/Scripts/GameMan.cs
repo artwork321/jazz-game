@@ -15,9 +15,6 @@ public class GameMan : MonoBehaviour
     public Player player;
     public Player enemyPlayer;
 
-    private int playerPtsRound = 0;
-    private int opponentPtsRound = 0;
-
     void Start()
     {
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
@@ -40,13 +37,6 @@ public class GameMan : MonoBehaviour
 
     void NewMatch()
     {
-        playerPtsRound = 0;
-        opponentPtsRound = 0;
-
-        // reset match score
-        scoreManager.resetPlayerPtsMatch();
-        scoreManager.resetOpponentPtsMatch();
-
         // clear played dice
         foreach (Transform child in player.playedPanel.transform) Destroy(child.gameObject);
         foreach (Transform child in enemyPlayer.playedPanel.transform) Destroy(child.gameObject);
@@ -79,7 +69,6 @@ public class GameMan : MonoBehaviour
     public void SwitchTurn() {
         if (IsEndRound())
         {
-            DecideWinnerRounds();
             DecideWinnerMatch();
         }
         else {
@@ -121,8 +110,11 @@ public class GameMan : MonoBehaviour
         }
     }
 
-    public void DecideWinnerRounds()
+    public void DecideWinnerMatch()
     {
+        int playerPtsRound = 0;
+        int opponentPtsRound = 0;
+
         for (int i = 0; i < 5; i++)
         {
             if (enemyPlayer.playerDice[i].diceValue < player.playerDice[i].diceValue)
@@ -134,30 +126,19 @@ public class GameMan : MonoBehaviour
                 opponentPtsRound++;
             }
         }
-    }
 
-    public void DecideWinnerMatch()
-    {
         if (playerPtsRound > opponentPtsRound)
         {
-            scoreManager.IncreasePlayerPtsMatch(6);
+            scoreManager.IncreasePlayerPtsGame(6);
         }
         else if (playerPtsRound < opponentPtsRound)
         {
-            scoreManager.IncreaseOpponentPtsMatch(6);
+            scoreManager.IncreaseOpponentPtsGame(6);
         }
+
+        scoreManager.UpdateScorePanel();
     }
 
-    public void PlayMatch(Player opponent, Player human)
-    {
-        NewMatch();
-
-        if (IsEndRound())
-        {
-            DecideWinnerRounds();
-            DecideWinnerMatch();
-        }
-    }
 
     public bool IsEndRound()
     {
