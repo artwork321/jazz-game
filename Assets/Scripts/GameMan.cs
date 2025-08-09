@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMan : MonoBehaviour
 {
     // game manager handles game states??
-    private bool playerTurn = false;
+    public bool playerTurn = false;
     private int playerPts = 0;
     private int opponentPts = 0;
 
@@ -31,14 +32,14 @@ public class GameMan : MonoBehaviour
     // game is the whole thing, so first to 12 points win the game
     // match is the actual thing where you start with all five of your dice and play it
     // 
-    public void NewGame()
+    void NewGame()
     {
         // maybe begins a new scene could be some animations to signify it being a new game  
         playerPts = 0;
         opponentPts = 0;
         NewMatch();
     }
-    public void NewMatch()
+    void NewMatch()
     {
         // return dice to each player
         // randomly assign values to each of the die
@@ -51,8 +52,37 @@ public class GameMan : MonoBehaviour
         }
 
         playerTurn = false;
+        EnemyTurn();
 
-    } 
+    }
 
+    public void PlayerTurn()
+    {
+        // set player dice to interactable
+        foreach (Transform child in playerSlot.transform)
+        {
+            child.gameObject.GetComponent<Button>().interactable = true;
+        }
+    }
+
+
+    public void EnemyTurn()
+    {
+
+        foreach (Transform child in playerSlot.transform)
+        {
+            child.gameObject.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    void Forfeit()
+    {
+
+    }
+
+    void EndRound()
+    {
+
+    }
  
 }

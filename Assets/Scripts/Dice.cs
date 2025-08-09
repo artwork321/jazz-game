@@ -7,6 +7,7 @@ public class Dice : MonoBehaviour
    private GameObject playedPanel;
    public int diceValue;
    public bool isEnemy = false;
+    public GameMan gm;
    void Start()
    {
       if (isEnemy)
@@ -17,6 +18,7 @@ public class Dice : MonoBehaviour
       {
          playedPanel = GameObject.Find("PlayerPlayed");
       }
+      gm = GameObject.Find("GameManager").GetComponent<GameMan>();
       diceValue = Random.Range(1, 7);
       transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
@@ -29,8 +31,17 @@ public class Dice : MonoBehaviour
 
    }
 
-   public void ButtonPressed()
-   {
-      transform.parent = playedPanel.transform;
-   }
+    public void ButtonPressed()
+    {
+        transform.parent = playedPanel.transform;
+        gm.playerTurn = !gm.playerTurn;
+        if (gm.playerTurn)
+        {
+            gm.PlayerTurn();
+        }
+        else
+        {
+            gm.EnemyTurn();
+        }
+    }
 }
