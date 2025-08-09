@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     public void PlayDiceTurn(GameObject dice)
     {
-        dice.transform.SetParent(playedPanel.transform, false); // Move under playedPanel
+        dice.transform.SetParent(playedPanel.transform, false); 
 
         // temporarily switch turn here
         gm.SwitchTurn();

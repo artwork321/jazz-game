@@ -32,11 +32,17 @@ public class GameMan : MonoBehaviour
     {
         scoreManager.resetPlayerGamePts();
         scoreManager.resetOpponentGamePts();
+        scoreManager.UpdateScorePanel();
         NewMatch();
     }
 
     void NewMatch()
     {
+        // Check if end game
+        if (IsEndGame()) {
+            EndGame();
+        }
+
         // clear played dice
         foreach (Transform child in player.playedPanel.transform) Destroy(child.gameObject);
         foreach (Transform child in enemyPlayer.playedPanel.transform) Destroy(child.gameObject);
@@ -67,9 +73,9 @@ public class GameMan : MonoBehaviour
     }
 
     public void SwitchTurn() {
-        if (IsEndRound())
+        if (IsEndMatch())
         {
-            DecideWinnerMatch();
+            EndMatch();
         }
         else {
             playerTurn = !playerTurn;
@@ -85,7 +91,7 @@ public class GameMan : MonoBehaviour
         }
     }
     
-
+    // Make player button interactable
     public void PlayerTurn()
     {
         foreach (Transform child in player.playerSlot.transform)
@@ -98,6 +104,7 @@ public class GameMan : MonoBehaviour
         }
     }
 
+    // Disable player button's interaction
     public void EnemyTurn()
     {
         foreach (Transform child in player.playerSlot.transform)
@@ -109,8 +116,10 @@ public class GameMan : MonoBehaviour
             }
         }
     }
+    
 
-    public void DecideWinnerMatch()
+    // Calculate points and decide who has higher points in a match
+    public void EndMatch()
     {
         int playerPtsRound = 0;
         int opponentPtsRound = 0;
@@ -137,10 +146,27 @@ public class GameMan : MonoBehaviour
         }
 
         scoreManager.UpdateScorePanel();
+
+        NewMatch();
+    }
+
+    public bool IsEndGame() {
+        return scoreManager.isEnemyWinTheGame() || scoreManager.isPlayerWinTheGame();
     }
 
 
-    public bool IsEndRound()
+    public void EndGame() {
+        if (scoreManager.isEnemyWinTheGame()) {
+            Debug.Log("Opponent Wins the Game");
+            NewGame();
+        }
+        else if (scoreManager.isPlayerWinTheGame()) {
+            Debug.Log("Player Wins the Game");
+            NewGame();
+        }
+    }
+
+    public bool IsEndMatch()
     {
         // Check PlayerPlayed and EnemyPlayed each have 5 dice
         return (player.playedPanel.transform.childCount == 5 && enemyPlayer.playedPanel.transform.childCount == 5);

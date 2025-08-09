@@ -3,8 +3,8 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int playerPts = 0;
-    private int opponentPts = 0;
+    public int playerPts = 0;
+    public int opponentPts = 0;
 
     private int WINNING_GAME_SCORE = 12; // Missing semicolon fixed
 
@@ -28,23 +28,22 @@ public class ScoreManager : MonoBehaviour
     {
         playerPts += bonus_pts;
         Debug.Log("Player Wins the Match and Game Points: " + playerPts);
-
-        if (playerPts >= WINNING_GAME_SCORE)
-        {
-            Debug.Log("Player Wins the Game!");
-        }
     }
 
     public void IncreaseOpponentPtsGame(int bonus_pts)
     {
         opponentPts += bonus_pts;
         Debug.Log("Opponent Win the Match and Current Game Points: " + opponentPts);
-
-        if (opponentPts >= WINNING_GAME_SCORE)
-        {
-            Debug.Log("Opponent Wins the Game!");
-        }
     }
+
+    public bool isEnemyWinTheGame() {
+        return opponentPts >= WINNING_GAME_SCORE;
+    }
+    
+    public bool isPlayerWinTheGame() {
+        return playerPts >= WINNING_GAME_SCORE;
+    }
+    
 
     public void resetPlayerGamePts()
     {
