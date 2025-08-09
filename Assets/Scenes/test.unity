@@ -420,13 +420,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943510746539566760, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6303157140145056315, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_text
       value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 6441073360614023586, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Name
@@ -988,13 +992,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943510746539566760, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6303157140145056315, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_text
       value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 6441073360614023586, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Name
@@ -1098,13 +1106,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943510746539566760, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6303157140145056315, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_text
       value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 6441073360614023586, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Name
@@ -1450,13 +1462,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943510746539566760, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6303157140145056315, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_text
       value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 6441073360614023586, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Name
@@ -1784,7 +1800,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -2129,7 +2145,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -2180,6 +2196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7b9192d493e4217b2d631160042d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dicePrefab: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+  playerSlot: {fileID: 0}
+  playedPanel: {fileID: 0}
 --- !u!1001 &1488970111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2268,13 +2287,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943510746539566760, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6303157140145056315, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_text
       value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 6441073360614023586, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
       propertyPath: m_Name
