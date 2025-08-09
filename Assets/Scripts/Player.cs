@@ -4,10 +4,10 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public string playerName; // "enemy" or "player"
+    [SerializeField] public string playerName; // "enemy" or "player"? doens't matter yet
     public List<Dice> playerDice;
     public GameObject playedPanel;
-    public GameObject playerSlot; // Assign PlayerSlot or EnemySlot in Inspector
+    public GameObject playerSlot;
     public GameMan gm;
 
     void Start()

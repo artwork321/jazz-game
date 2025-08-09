@@ -102,6 +102,15 @@ public class GameMan : MonoBehaviour
                 btn.interactable = true;
             }
         }
+
+        foreach (Transform child in enemyPlayer.playerSlot.transform)
+        {
+            Button btn = child.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.interactable = false;
+            }
+        }
     }
 
     // Disable player button's interaction
@@ -113,6 +122,15 @@ public class GameMan : MonoBehaviour
             if (btn != null)
             {
                 btn.interactable = false;
+            }
+        }
+
+        foreach (Transform child in enemyPlayer.playerSlot.transform)
+        {
+            Button btn = child.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.interactable = true;
             }
         }
     }
