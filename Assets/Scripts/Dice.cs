@@ -32,31 +32,34 @@ public class Dice : MonoBehaviour
 
     }
 
+    // Called when a die is clicked then let's player handle the action
     public void ButtonPressed()
     {
-        player.PlayDiceTurn(gameObject); // Pass clicked dice to Player script
+        player.PlayDiceTurn(gameObject);
     }
 
+
+    // Swap dice at idx in played dice from both players
     public void InvertDice(int dieIdx, Enemy enemy, Character player) {
 
-        // swap playedDice in Character and the UI
         Debug.Log(dieIdx);
         Dice playerInvertedDice = player.playedPanel.GetComponentsInChildren<Dice>()[dieIdx];
         Dice enemyInvertedDice = enemy.playedPanel.GetComponentsInChildren<Dice>()[dieIdx];
 
-        playerInvertedDice.gameObject.transform.SetParent(enemy.playedPanel.transform, false); 
+        playerInvertedDice.gameObject.transform.SetParent(enemy.playedPanel.transform, false); // Move UI
         enemyInvertedDice.gameObject.transform.SetParent(player.playedPanel.transform, false); 
 
-        playerInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
+        playerInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx); // Ensure order
         enemyInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
 
-        playerInvertedDice.isEnemy = true;
+        playerInvertedDice.isEnemy = true; // Update property
         enemyInvertedDice.isEnemy = false;
 
-        player.DisablePlayedDice();
+        player.DisablePlayedDice(); // Disable effect after finish
         enemy.DisablePlayedDice();
     }
 
+    // Increase die's value by 1
     public void IncreaseValue() {
         diceValue += 1;
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
@@ -64,6 +67,7 @@ public class Dice : MonoBehaviour
         player.DisablePlayedDice();
     }
 
+    // Reroll the die's value
     public void RerollValue() {
         diceValue = Random.Range(1, 7);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();

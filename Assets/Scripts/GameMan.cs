@@ -83,7 +83,7 @@ public class GameMan : MonoBehaviour
             die.GetComponent<Button>().interactable = false;
             enemyPlayer.playerDice.Add(diceObject);
 
-            oppTotal += diceObject.diceValue;
+            oppTotal += diceObject.diceValue; // store total value of all dice
         }
         enemyPlayer.diceTotal = oppTotal;
         oppTotalUI.GetComponent<TextMeshProUGUI>().text = oppTotal.ToString();
@@ -97,6 +97,7 @@ public class GameMan : MonoBehaviour
     // Calculate points and decide who has higher points in a match
     public void EndMatch(bool isForfeit = false)
     {   
+
         int playerPtsRound = 0;
         int opponentPtsRound = 0;
 
@@ -192,17 +193,13 @@ public class GameMan : MonoBehaviour
             playerTurn = !playerTurn;
 
             if (playerTurn)
-            {
                 PlayerTurn();
-            }
             else
-            {
                 EnemyTurn();
-            }
         }
     }
     
-    // Make player button interactable
+    // Make player buttons interactable
     public void PlayerTurn()
     {
         Debug.Log("Player Turn!");
@@ -218,7 +215,7 @@ public class GameMan : MonoBehaviour
         foifeitButton.GetComponent<Button>().interactable = true;
     }
 
-    // Disable player button's interaction
+
     public void EnemyTurn()
     {
         Debug.Log("Enemy Turn!");
@@ -237,12 +234,14 @@ public class GameMan : MonoBehaviour
         StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
     }
 
+
     public void DisablePowerUps() {
         foreach (PowerUp skill in skillButtons) {
             Button skillBtn = skill.gameObject.GetComponent<Button>();
             skillBtn.interactable = false;
         }
     }
+
 
     public void EnablePowerUps() {
         foreach (PowerUp skill in skillButtons) {

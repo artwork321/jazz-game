@@ -11,14 +11,14 @@ public class Character : MonoBehaviour
     public GameObject playerSlot;
     public GameMan gm;
 
-
+    // Delegate forfeit process to game manager
     public void Forfeit()
     {
         Debug.Log(playerName + " has forfeited!");
         gm.ExecuteForfeit(this);
     }
 
-
+    // Play a round
     public void PlayDiceTurn(GameObject dice)
     {
         dice.transform.SetParent(playedPanel.transform, false); 
@@ -31,7 +31,7 @@ public class Character : MonoBehaviour
         gm.SwitchTurn();
     }
 
-
+    // Remove all methods or effects associated with played dice
     public void DisablePlayedDice() {
         Button[] playerPlayedDice = playedPanel.GetComponentsInChildren<Button>();
 

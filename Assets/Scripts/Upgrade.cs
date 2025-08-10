@@ -10,6 +10,7 @@ public class Upgrade : PowerUp
         cost = 0;
     }
 
+    // Activate played dice and increase their value if clicked
     protected override void ApplyEffect(Character calledPlayer)
     {
 
@@ -17,7 +18,6 @@ public class Upgrade : PowerUp
 
         for (int i = 0; i < playedDiceButtons.Length; i++)
         {
-            int idx = i;
             Button btn = playedDiceButtons[i];
 
             btn.interactable = true;

@@ -9,9 +9,9 @@ public class Invert : PowerUp
         cost = 0;
     }
 
+    // Activate played dice and invert dice of a column if clicked
     protected override void ApplyEffect(Character calledPlayer)
     {
-
         Button[] playedDiceButtons = calledPlayer.playedPanel.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < playedDiceButtons.Length; i++)
