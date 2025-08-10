@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class GameMan : MonoBehaviour
 {
@@ -15,11 +16,12 @@ public class GameMan : MonoBehaviour
     public Character player;
     public Enemy enemyPlayer;
 
+    // gameplay-related UI components
     public GameObject foifeitButton;
+    public GameObject oppTotalUI;
 
     void Start()
     {
-        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         NewGame();
     }
 
@@ -67,74 +69,27 @@ public class GameMan : MonoBehaviour
         }
 
         // spawn enemy's dice
+        int oppTotal = 0;
+
         for (int i = 0; i < 5; i++)
         {
             GameObject die = Instantiate(dicePrefab, enemyPlayer.playerSlot.transform);
-            die.GetComponent<Dice>().isEnemy = true;
-            die.GetComponent<Dice>().player = enemyPlayer;
+            Dice diceObject = die.GetComponent<Dice>();
+
+            diceObject.isEnemy = true;
+            diceObject.player = enemyPlayer;
+
             die.GetComponent<Button>().interactable = false;
-            enemyPlayer.playerDice.Add(die.GetComponent<Dice>());
+            enemyPlayer.playerDice.Add(diceObject);
+
+            oppTotal += diceObject.diceValue;
         }
+        enemyPlayer.diceTotal = oppTotal;
+        oppTotalUI.GetComponent<TextMeshProUGUI>().text = oppTotal.ToString();
 
         // Let Enemy start first for now
         playerTurn = false;
         EnemyTurn();
-    }
-
-    public void SwitchTurn() {
-        if (IsEndMatch())
-        {
-            EndMatch();
-        }
-        else {
-            playerTurn = !playerTurn;
-
-            if (playerTurn)
-            {
-                PlayerTurn();
-            }
-            else
-            {
-                EnemyTurn();
-            }
-        }
-    }
-    
-    // Make player button interactable
-    public void PlayerTurn()
-    {
-        Debug.Log("Player Turn!");
-
-        foreach (Transform child in player.playerSlot.transform)
-        {
-            Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = true;
-            }
-        }
-
-        foifeitButton.GetComponent<Button>().interactable = true;
-    }
-
-    // Disable player button's interaction
-    public void EnemyTurn()
-    {
-        Debug.Log("Enemy Turn!");
-
-        foreach (Transform child in player.playerSlot.transform)
-        {
-            Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = false;
-            }
-        }
-
-        foifeitButton.GetComponent<Button>().interactable = false;
-
-        // fake some thinking time
-        StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
     }
     
 
@@ -224,5 +179,62 @@ public class GameMan : MonoBehaviour
 
         // New Match
         EndMatch(true);        
+    }
+
+
+    public void SwitchTurn() {
+        if (IsEndMatch())
+        {
+            EndMatch();
+        }
+        else {
+            playerTurn = !playerTurn;
+
+            if (playerTurn)
+            {
+                PlayerTurn();
+            }
+            else
+            {
+                EnemyTurn();
+            }
+        }
+    }
+    
+    // Make player button interactable
+    public void PlayerTurn()
+    {
+        Debug.Log("Player Turn!");
+
+        foreach (Transform child in player.playerSlot.transform)
+        {
+            Button btn = child.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.interactable = true;
+            }
+        }
+
+        foifeitButton.GetComponent<Button>().interactable = true;
+    }
+
+    // Disable player button's interaction
+    public void EnemyTurn()
+    {
+        Debug.Log("Enemy Turn!");
+
+        foreach (Transform child in player.playerSlot.transform)
+        {
+            Button btn = child.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.interactable = false;
+            }
+        }
+
+        foifeitButton.GetComponent<Button>().interactable = false;
+
+        // fake some thinking time
+        StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
     }
 }

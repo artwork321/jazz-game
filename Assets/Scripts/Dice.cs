@@ -8,7 +8,7 @@ public class Dice : MonoBehaviour
     public bool isEnemy = false;
     public Character player;
 
-    void Start()
+    void Awake()
     {
         if (isEnemy)
         {
@@ -18,7 +18,7 @@ public class Dice : MonoBehaviour
         else
         {
             playedPanel = GameObject.Find("PlayerPlayed");
-            player = GameObject.Find("Player").GetComponent<Player>();
+            player = GameObject.Find("Player").GetComponent<Character>();
         }
 
         // Assign random dice value

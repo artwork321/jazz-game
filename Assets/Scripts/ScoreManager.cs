@@ -3,10 +3,10 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    private int WINNING_GAME_SCORE = 12; // Missing semicolon fixed
+
     public int playerPts = 0;
     public int opponentPts = 0;
-
-    private int WINNING_GAME_SCORE = 12; // Missing semicolon fixed
 
     // UI objects
     public GameObject scorePanel;
@@ -16,12 +16,6 @@ public class ScoreManager : MonoBehaviour
     {
         resetPlayerGamePts();
         resetOpponentGamePts();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void IncreasePlayerPtsGame(int bonus_pts)

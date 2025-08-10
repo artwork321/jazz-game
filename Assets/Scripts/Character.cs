@@ -4,7 +4,7 @@ using System;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] public string playerName; // "enemy" or "player"? doens't matter yet
+    [SerializeField] public string playerName; // "Enemy {i}" or "Player"
     public List<Dice> playerDice;
     public GameObject playedPanel;
     public GameObject playerSlot;

@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Enemy : Character
 {
+    public int diceTotal;
 
     public void PlayDiceTurn()
     {
