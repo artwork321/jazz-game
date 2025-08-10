@@ -19,7 +19,7 @@ public class Enemy : Character
 
     public IEnumerator EnemyPlayWithDelay()
     {
-        yield return new WaitForSeconds(3f); // delay for 1.5 seconds
+        yield return new WaitForSeconds(0.5f); // delay for 1.5 seconds
         PlayDiceTurn(); // your enemy logic here
     }
 }

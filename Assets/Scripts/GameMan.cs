@@ -19,6 +19,7 @@ public class GameMan : MonoBehaviour
     // gameplay-related UI components
     public GameObject foifeitButton;
     public GameObject oppTotalUI;
+    public GameObject skillButtons;
 
     void Start()
     {
@@ -213,6 +214,11 @@ public class GameMan : MonoBehaviour
             {
                 btn.interactable = true;
             }
+        }
+
+        foreach (Transform child in skillButtons.transform) {
+            Button skillBtn = child.GetComponent<Button>();
+            skillBtn.interactable = true;
         }
 
         foifeitButton.GetComponent<Button>().interactable = true;

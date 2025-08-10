@@ -31,7 +31,14 @@ public class Character : MonoBehaviour
         gm.SwitchTurn();
     }
 
-    public void PlayCardTurn() {
 
+    public void DisablePlayedDice() {
+        Button[] playerPlayedDice = playedPanel.GetComponentsInChildren<Button>();
+
+        for (int i = 0; i < playerPlayedDice.Length; i++) {
+            Button btn = playerPlayedDice[i];
+            btn.onClick.RemoveAllListeners();
+            btn.interactable = false;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class Dice : MonoBehaviour
     private GameObject playedPanel;
     public int diceValue;
     public bool isEnemy = false;
-    public Character player;
+    public Character player; // Owner of the die
 
     void Awake()
     {
@@ -25,10 +25,8 @@ public class Dice : MonoBehaviour
         // Assign random dice value
         diceValue = Random.Range(1, 7);
 
-        // Update dice display (assumes first child has a TextMeshProUGUI component)
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
-        // Add Listener
         if (!isEnemy)
             gameObject.GetComponent<Button>().onClick.AddListener(ButtonPressed);
 
@@ -37,5 +35,36 @@ public class Dice : MonoBehaviour
     public void ButtonPressed()
     {
         player.PlayDiceTurn(gameObject); // Pass clicked dice to Player script
+    }
+
+    public void InvertDice(int dieIdx, Enemy enemy, Character player) {
+
+        // swap playedDice in Character and the UI
+        Debug.Log(dieIdx);
+        Dice playerInvertedDice = player.playedPanel.GetComponentsInChildren<Dice>()[dieIdx];
+        Dice enemyInvertedDice = enemy.playedPanel.GetComponentsInChildren<Dice>()[dieIdx];
+
+        playerInvertedDice.gameObject.transform.SetParent(enemy.playedPanel.transform, false); 
+        enemyInvertedDice.gameObject.transform.SetParent(player.playedPanel.transform, false); 
+
+        playerInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
+        enemyInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
+
+        player.DisablePlayedDice();
+        enemy.DisablePlayedDice();
+    }
+
+    public void IncreaseValue() {
+        diceValue += 1;
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
+
+        player.DisablePlayedDice();
+    }
+
+    public void RerollValue() {
+        diceValue = Random.Range(1, 7);
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
+
+        player.DisablePlayedDice();
     }
 }
