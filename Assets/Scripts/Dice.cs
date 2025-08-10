@@ -6,15 +6,14 @@ public class Dice : MonoBehaviour
     private GameObject playedPanel;
     public int diceValue;
     public bool isEnemy = false;
-    public Player player;
-    public GameMan gm;
+    public Character player;
 
     void Start()
     {
         if (isEnemy)
         {
             playedPanel = GameObject.Find("EnemyPlayed");
-            player = GameObject.Find("Enemy").GetComponent<Player>(); // Added GetComponent
+            player = GameObject.Find("Enemy").GetComponent<Enemy>(); // Added GetComponent
         }
         else
         {

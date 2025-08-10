@@ -12,8 +12,10 @@ public class GameMan : MonoBehaviour
 
     public GameObject dicePrefab;
 
-    public Player player;
-    public Player enemyPlayer;
+    public Character player;
+    public Enemy enemyPlayer;
+
+    public GameObject foifeitButton;
 
     void Start()
     {
@@ -51,12 +53,17 @@ public class GameMan : MonoBehaviour
         foreach (Transform child in player.playerSlot.transform) Destroy(child.gameObject);
         foreach (Transform child in enemyPlayer.playerSlot.transform) Destroy(child.gameObject);
 
+        // clear player internal dice
+        player.playerDice.Clear();
+        enemyPlayer.playerDice.Clear();
+
         // spawn player's dice
         for (int i = 0; i < 5; i++)
         {
             GameObject die = Instantiate(dicePrefab, player.playerSlot.transform);
             die.GetComponent<Dice>().isEnemy = false;
             die.GetComponent<Dice>().player = player;
+            player.playerDice.Add(die.GetComponent<Dice>());
         }
 
         // spawn enemy's dice
@@ -65,6 +72,8 @@ public class GameMan : MonoBehaviour
             GameObject die = Instantiate(dicePrefab, enemyPlayer.playerSlot.transform);
             die.GetComponent<Dice>().isEnemy = true;
             die.GetComponent<Dice>().player = enemyPlayer;
+            die.GetComponent<Button>().interactable = false;
+            enemyPlayer.playerDice.Add(die.GetComponent<Dice>());
         }
 
         // Let Enemy start first for now
@@ -94,6 +103,8 @@ public class GameMan : MonoBehaviour
     // Make player button interactable
     public void PlayerTurn()
     {
+        Debug.Log("Player Turn!");
+
         foreach (Transform child in player.playerSlot.transform)
         {
             Button btn = child.GetComponent<Button>();
@@ -103,19 +114,14 @@ public class GameMan : MonoBehaviour
             }
         }
 
-        foreach (Transform child in enemyPlayer.playerSlot.transform)
-        {
-            Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = false;
-            }
-        }
+        foifeitButton.GetComponent<Button>().interactable = true;
     }
 
     // Disable player button's interaction
     public void EnemyTurn()
     {
+        Debug.Log("Enemy Turn!");
+
         foreach (Transform child in player.playerSlot.transform)
         {
             Button btn = child.GetComponent<Button>();
@@ -125,47 +131,52 @@ public class GameMan : MonoBehaviour
             }
         }
 
-        foreach (Transform child in enemyPlayer.playerSlot.transform)
-        {
-            Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = true;
-            }
-        }
+        foifeitButton.GetComponent<Button>().interactable = false;
+
+        // fake some thinking time
+        StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
     }
     
 
     // Calculate points and decide who has higher points in a match
-    public void EndMatch()
-    {
+    public void EndMatch(bool isForfeit = false)
+    {   
         int playerPtsRound = 0;
         int opponentPtsRound = 0;
 
-        for (int i = 0; i < 5; i++)
-        {
-            if (enemyPlayer.playerDice[i].diceValue < player.playerDice[i].diceValue)
+        // Calculate scores for every round
+        if (!isForfeit) {
+
+            Dice[] enemyPlayedDice = enemyPlayer.playedPanel.GetComponentsInChildren<Dice>();
+            Dice[] playerPlayedDice = player.playedPanel.GetComponentsInChildren<Dice>();
+
+
+            for (int i = 0; i < 5; i++)
             {
-                playerPtsRound++;
+                if (enemyPlayedDice[i].diceValue < playerPlayedDice[i].diceValue)
+                {
+                    playerPtsRound++;
+                }
+                else if (enemyPlayedDice[i].diceValue > playerPlayedDice[i].diceValue)
+                {
+                    opponentPtsRound++;
+                }
             }
-            else if (enemyPlayer.playerDice[i].diceValue > player.playerDice[i].diceValue)
+
+            if (playerPtsRound > opponentPtsRound)
             {
-                opponentPtsRound++;
+                scoreManager.IncreasePlayerPtsGame(6);
+            }
+            else if (playerPtsRound < opponentPtsRound)
+            {
+                scoreManager.IncreaseOpponentPtsGame(6);
             }
         }
 
-        if (playerPtsRound > opponentPtsRound)
-        {
-            scoreManager.IncreasePlayerPtsGame(6);
-        }
-        else if (playerPtsRound < opponentPtsRound)
-        {
-            scoreManager.IncreaseOpponentPtsGame(6);
-        }
-
+        // Update score and play new match
         scoreManager.UpdateScorePanel();
-
         NewMatch();
+        
     }
 
     public bool IsEndGame() {
@@ -188,5 +199,30 @@ public class GameMan : MonoBehaviour
     {
         // Check PlayerPlayed and EnemyPlayed each have 5 dice
         return (player.playedPanel.transform.childCount == 5 && enemyPlayer.playedPanel.transform.childCount == 5);
+    }
+
+    public void ExecuteForfeit(Character character) {
+        int numberOfDicePlayed = character.playedPanel.transform.childCount;
+        Character gainedChar = (character.playerName == "Player") ? enemyPlayer : player;
+        
+        // Give points to the opponent
+        if (numberOfDicePlayed == 0) {
+            scoreManager.IncreasePtsGameByCharacter(2, gainedChar);
+        }
+        else if (numberOfDicePlayed == 1) {
+            scoreManager.IncreasePtsGameByCharacter(3, gainedChar);
+        }
+        else if (numberOfDicePlayed == 2) {
+            scoreManager.IncreasePtsGameByCharacter(4, gainedChar);
+        }
+        else if (numberOfDicePlayed == 3) {
+            scoreManager.IncreasePtsGameByCharacter(5, gainedChar);
+        }
+        else if (numberOfDicePlayed == 4) {
+            scoreManager.IncreasePtsGameByCharacter(6, gainedChar);
+        }
+
+        // New Match
+        EndMatch(true);        
     }
 }

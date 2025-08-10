@@ -36,6 +36,15 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Opponent Win the Match and Current Game Points: " + opponentPts);
     }
 
+    public void IncreasePtsGameByCharacter(int bonus_pts, Character character) {
+        if (character.playerName == "Player") {
+            IncreasePlayerPtsGame(bonus_pts);
+        }
+        else {
+            IncreaseOpponentPtsGame(bonus_pts);
+        }
+    }
+
     public bool isEnemyWinTheGame() {
         return opponentPts >= WINNING_GAME_SCORE;
     }
