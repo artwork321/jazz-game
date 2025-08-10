@@ -6,11 +6,12 @@ public class Invert : PowerUp
     protected override void Awake()
     {
         base.Awake();
-        cost = 4;
+        cost = 0;
     }
 
     protected override void ApplyEffect(Character calledPlayer)
     {
+
         Button[] playedDiceButtons = calledPlayer.playedPanel.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < playedDiceButtons.Length; i++)

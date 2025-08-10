@@ -50,6 +50,9 @@ public class Dice : MonoBehaviour
         playerInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
         enemyInvertedDice.gameObject.transform.SetSiblingIndex(dieIdx);
 
+        playerInvertedDice.isEnemy = true;
+        enemyInvertedDice.isEnemy = false;
+
         player.DisablePlayedDice();
         enemy.DisablePlayedDice();
     }

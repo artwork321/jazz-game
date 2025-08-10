@@ -19,7 +19,7 @@ public class GameMan : MonoBehaviour
     // gameplay-related UI components
     public GameObject foifeitButton;
     public GameObject oppTotalUI;
-    public GameObject skillButtons;
+    public PowerUp[] skillButtons;
 
     void Start()
     {
@@ -210,16 +210,10 @@ public class GameMan : MonoBehaviour
         foreach (Transform child in player.playerSlot.transform)
         {
             Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = true;
-            }
+            btn.interactable = true;
         }
 
-        foreach (Transform child in skillButtons.transform) {
-            Button skillBtn = child.GetComponent<Button>();
-            skillBtn.interactable = true;
-        }
+        EnablePowerUps();
 
         foifeitButton.GetComponent<Button>().interactable = true;
     }
@@ -232,15 +226,32 @@ public class GameMan : MonoBehaviour
         foreach (Transform child in player.playerSlot.transform)
         {
             Button btn = child.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.interactable = false;
-            }
+            btn.interactable = false;
         }
+
+        DisablePowerUps();
 
         foifeitButton.GetComponent<Button>().interactable = false;
 
         // fake some thinking time
         StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
+    }
+
+    public void DisablePowerUps() {
+        foreach (PowerUp skill in skillButtons) {
+            Button skillBtn = skill.gameObject.GetComponent<Button>();
+            skillBtn.interactable = false;
+        }
+    }
+
+    public void EnablePowerUps() {
+        foreach (PowerUp skill in skillButtons) {
+            // Only show skills that haven't been used
+            if (skill.isUsed == false) {
+                Button skillBtn = skill.gameObject.GetComponent<Button>();
+                skillBtn.interactable = true;
+            }
+
+        }
     }
 }
