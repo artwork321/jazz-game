@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Dice : MonoBehaviour
@@ -26,6 +27,11 @@ public class Dice : MonoBehaviour
 
         // Update dice display (assumes first child has a TextMeshProUGUI component)
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
+
+        // Add Listener
+        if (!isEnemy)
+            gameObject.GetComponent<Button>().onClick.AddListener(ButtonPressed);
+
     }
 
     public void ButtonPressed()

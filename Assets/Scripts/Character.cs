@@ -1,6 +1,7 @@
 using UnityEngine;
-using System.Collections.Generic; 
-using System; 
+using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro; 
 
 public class Character : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Character : MonoBehaviour
     public void PlayDiceTurn(GameObject dice)
     {
         dice.transform.SetParent(playedPanel.transform, false); 
+        dice.GetComponent<Button>().interactable = false;
+        dice.GetComponent<Button>().onClick.RemoveAllListeners();
+
         playerDice.Remove(dice.GetComponent<Dice>());
 
         // temporarily switch turn here
