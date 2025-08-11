@@ -52,7 +52,7 @@ public class Enemy : Character
 
         for (int i = 0; i < playedPanel.transform.childCount; i++)
         {
-            if (child.gameObject.GetComponent<Dice>().diceValue > 3) bigCountPlayed++;
+            if (playedPanel.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue > 3) bigCountPlayed++;
             if (playedPanel.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue < enemyPlayed.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue) lost++;
         }
 
