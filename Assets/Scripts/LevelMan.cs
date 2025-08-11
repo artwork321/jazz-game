@@ -26,10 +26,10 @@ public class LevelMan : MonoBehaviour
         StartCoroutine(LevelTransition(levelIndex));
     }
 
-    private IEnumerator LevelTransition(int levelIndex) 
+    private IEnumerator LevelTransition(int levelIndex)
     {
         // can add the tutorial for new powerups here
-        fadePanel.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Let's play level " + levelIndex.ToString();
+        fadePanel.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Let's play level " + (levelIndex + 1).ToString();
         yield return StartCoroutine(FadeOut());
 
 
@@ -37,7 +37,7 @@ public class LevelMan : MonoBehaviour
         Level level = levels[levelIndex];
 
         // Example: Play music for this level
-        /*
+
         if (level.bgMusic != null)
         {
             AudioSource audioSource = GetComponent<AudioSource>();
@@ -47,7 +47,7 @@ public class LevelMan : MonoBehaviour
                 audioSource.Play();
             }
         }
-        */
+
 
         yield return new WaitForSeconds(3f);
         yield return StartCoroutine(FadeIn());
@@ -96,6 +96,7 @@ public class LevelMan : MonoBehaviour
             return levels[currentLevelIndex];
         return null;
     }
+
 }
 
 [System.Serializable]

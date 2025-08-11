@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
@@ -19,6 +20,9 @@ public class GameMan : MonoBehaviour
     public UIManager uiManager;
 
     private LevelMan lm;
+
+    public AudioClip win;
+    public AudioClip lose;
 
     void Start()
     {
@@ -114,6 +118,7 @@ public class GameMan : MonoBehaviour
 
         int playerPtsRound = 0;
         int opponentPtsRound = 0;
+        AudioSource auds = GameObject.Find("SoundManager").GetComponent<AudioSource>();
 
         // Calculate scores for every round
         if (!isForfeit) {
@@ -137,18 +142,30 @@ public class GameMan : MonoBehaviour
             if (playerPtsRound > opponentPtsRound)
             {
                 scoreManager.IncreasePlayerPtsGame(6);
+                // play sound effect
+                auds.clip = win;
             }
-            else if (playerPtsRound < opponentPtsRound)
+            else
             {
                 scoreManager.IncreaseOpponentPtsGame(6);
+                // play sound effect
+                auds.clip = lose;
             }
+            auds.Play();
         }
 
         // Update score and play new match
         scoreManager.UpdateScorePanel();
+        StartCoroutine(SmallPause());
+        // small reset?
         NewMatch();
         
     }
+    private IEnumerator SmallPause()
+    {
+        yield return new WaitForSeconds(3f);
+    }
+
 
     public bool IsEndGame() {
         return scoreManager.isEnemyWinTheGame() || scoreManager.isPlayerWinTheGame();

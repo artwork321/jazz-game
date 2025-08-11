@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+
 
 public class Dice : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Dice : MonoBehaviour
     public Character player; // Owner of the die
     private GameMan gm;
 
+
+    public List<Sprite> diceFaces;
     void Awake()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameMan>();
@@ -29,7 +33,7 @@ public class Dice : MonoBehaviour
         diceValue = Random.Range(1, 7);
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
-
+        GetComponent<Image>().sprite = diceFaces[diceValue - 1];
         if (!isEnemy)
             gameObject.GetComponent<Button>().onClick.AddListener(ButtonPressed);
 
@@ -69,6 +73,7 @@ public class Dice : MonoBehaviour
     // Increase die's value by 1
     public void IncreaseValue() {
         diceValue += 1;
+        GetComponent<Image>().sprite = diceFaces[diceValue - 1];
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
         gm.uiManager.DisablePlayerPlayedDice();
@@ -80,6 +85,7 @@ public class Dice : MonoBehaviour
         diceValue = Random.Range(1, 7);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
+        GetComponent<Image>().sprite = diceFaces[diceValue - 1];
         // remove this listener
         gm.uiManager.RemoveAllDiceListeners();
 
