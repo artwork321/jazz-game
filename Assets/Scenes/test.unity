@@ -936,6 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296f77a3f476cc54ebb6d8ae32e4717c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
   isUsed: 0
 --- !u!1 &421392510
 GameObject:
@@ -987,6 +988,7 @@ MonoBehaviour:
   playerDice: []
   playedPanel: {fileID: 1280867961}
   playerSlot: {fileID: 43580894}
+  enemyPlayed: {fileID: 0}
   gm: {fileID: 1306738234}
   diceTotal: 0
 --- !u!1 &437807729
@@ -3104,9 +3106,7 @@ MonoBehaviour:
   dicePrefab: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
   player: {fileID: 1621920091}
   enemyPlayer: {fileID: 421392512}
-  foifeitButton: {fileID: 1661938999}
-  oppTotalUI: {fileID: 1688795991}
-  skillButtons: []
+  uiManager: {fileID: 0}
 --- !u!114 &1306738235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,7 +3174,7 @@ MonoBehaviour:
     - level 5 dialogue here
     - more dialogue i guess
     voice: []
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 1170099941}
   typingSpeed: 0.05
 --- !u!1001 &1488970111
 PrefabInstance:
@@ -3352,6 +3352,7 @@ MonoBehaviour:
   playerDice: []
   playedPanel: {fileID: 1119866465}
   playerSlot: {fileID: 283594257}
+  enemyPlayed: {fileID: 0}
   gm: {fileID: 1306738234}
 --- !u!1 &1661938999
 GameObject:
@@ -4013,6 +4014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24ef259e3d4f9c41b43c348be91d4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
   isUsed: 0
 --- !u!1 &2069691328
 GameObject:
