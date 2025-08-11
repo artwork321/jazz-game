@@ -37,10 +37,15 @@ public class GameMan : MonoBehaviour
     // Game = first to 12 points win the game
     // Match = the actual play with all five dice
     public void NewGame()
-    {
+    {   
+        // reset points
         scoreManager.resetPlayerGamePts();
         scoreManager.resetOpponentGamePts();
         scoreManager.UpdateScorePanel();
+
+        // reset powerups
+    
+        // reset dice
         NewMatch();
     }
 
@@ -49,6 +54,7 @@ public class GameMan : MonoBehaviour
         // Check if end game
         if (IsEndGame()) {
             EndGame();
+            return;
         }
 
         // clear played dice
@@ -148,13 +154,11 @@ public class GameMan : MonoBehaviour
         if (scoreManager.isEnemyWinTheGame())
         {
             Debug.Log("Opponent Wins the Game");
-            // NewGame();
             lm.RepeatLevel();
         }
         else if (scoreManager.isPlayerWinTheGame())
         {
             Debug.Log("Player Wins the Game");
-            NewGame();
             lm.GoToNextLevel();
         }
     }
