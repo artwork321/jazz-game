@@ -236,7 +236,7 @@ public class GameMan : MonoBehaviour
 
         uiManager.DisablePowerUps();
 
-        uiManager.foifeitButton.GetComponent<Button>().interactable = false;
+        uiManager.DisableForfeit();
 
         // fake some thinking time
         StartCoroutine(enemyPlayer.EnemyPlayWithDelay());

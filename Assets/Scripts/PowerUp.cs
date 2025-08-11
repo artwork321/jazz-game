@@ -18,7 +18,10 @@ public abstract class PowerUp : MonoBehaviour
         if (!CanActivate(calledPlayer)) return;
 
         gm.uiManager.DisablePowerUps(); // Disable all powerups if one has been selected
-        DeductCost(calledPlayer); // Execute the effect
+        gm.uiManager.DisableForfeit();
+
+        // Execute the effect
+        DeductCost(calledPlayer); 
         ApplyEffect(calledPlayer);
     }
 

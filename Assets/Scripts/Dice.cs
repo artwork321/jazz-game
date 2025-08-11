@@ -60,6 +60,7 @@ public class Dice : MonoBehaviour
 
         gm.uiManager.DisablePlayerPlayedDice(); // Disable effect after finish
         gm.uiManager.DisableEnemyPlayedDice();
+        gm.uiManager.EnablePlayerRemainingDice();
     }
 
     // Increase die's value by 1
@@ -68,6 +69,7 @@ public class Dice : MonoBehaviour
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
         gm.uiManager.DisablePlayerPlayedDice();
+        gm.uiManager.EnablePlayerRemainingDice();
     }
 
     // Reroll the die's value

@@ -18,13 +18,21 @@ public class UIManager : MonoBehaviour
         oppTotalUI.GetComponent<TextMeshProUGUI>().text = "?";
     }
 
+    public void DisableForfeit() {
+        foifeitButton.GetComponent<Button>().interactable = false;
+    }
+
+    public void EnableForfeit() {
+        foifeitButton.GetComponent<Button>().interactable = true;
+    }
+
+
     public void DisablePowerUps() {
         foreach (PowerUp skill in skillButtons) {
             Button skillBtn = skill.gameObject.GetComponent<Button>();
             skillBtn.interactable = false;
         }
     }
-
 
     public void EnablePowerUps() {
         foreach (PowerUp skill in skillButtons) {
@@ -56,6 +64,21 @@ public class UIManager : MonoBehaviour
             Button btn = playerPlayedDice[i];
             btn.onClick.RemoveAllListeners();
             btn.interactable = false;
+        }
+    }
+
+    public void DisablePlayerRemainingDice() {
+        foreach (Dice die in gm.player.playerDice) {
+            Button btn = die.gameObject.GetComponent<Button>();
+            btn.interactable = false;
+        }
+    }
+
+    
+    public void EnablePlayerRemainingDice() {
+        foreach (Dice die in gm.player.playerDice) {
+            Button btn = die.gameObject.GetComponent<Button>();
+            btn.interactable = true;
         }
     }
 }
