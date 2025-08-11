@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    protected int cost;
+    public int cost;
     protected GameMan gm;
     public bool isUsed = false;
 

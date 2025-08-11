@@ -72,6 +72,10 @@ public class Dice : MonoBehaviour
         diceValue = Random.Range(1, 7);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
-        player.DisablePlayedDice();
+        // remove this listener
+        gameObject.GetComponent<Button>().onClick.RemoveListener(RerollValue);
+
+        // add play listener
+        gameObject.GetComponent<Button>().onClick.AddListener(ButtonPressed);
     }
 }
