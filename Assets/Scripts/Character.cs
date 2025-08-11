@@ -24,6 +24,10 @@ public class Character : MonoBehaviour
     // Play a round
     public void PlayDiceTurn(GameObject dice)
     {
+        if (dice == null) {
+            return;
+        }
+        
         dice.transform.SetParent(playedPanel.transform, false); 
         dice.GetComponent<Button>().interactable = false;
         dice.GetComponent<Button>().onClick.RemoveAllListeners();

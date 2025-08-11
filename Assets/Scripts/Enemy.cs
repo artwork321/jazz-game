@@ -8,9 +8,13 @@ public class Enemy : Character
 
     public IEnumerator EnemyPlayWithDelay()
     {
-        yield return new WaitForSeconds(3f); // delay for 1.5 seconds
+        yield return new WaitForSeconds(1.5f); // delay for 1.5 seconds
         strategy.UsePowerUps();
         strategy.SelectDie();
+
+        if (strategy.chosenDice == null) { // sign of forfeit
+            yield break;
+        }
         PlayDiceTurn(strategy.chosenDice.gameObject);
     }
 

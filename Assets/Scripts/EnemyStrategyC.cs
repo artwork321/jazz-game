@@ -15,7 +15,7 @@ public class EnemyStrategyC : EnemyStrategy
 
     public override void UsePowerUps() {
         ChoosePowerupsForMatch();
-        
+
         Dice[] playedDice = enemy.playedPanel.GetComponentsInChildren<Dice>();
         Dice[] playerPlayedDice = enemy.enemyPlayed.GetComponentsInChildren<Dice>();
 
@@ -61,16 +61,22 @@ public class EnemyStrategyC : EnemyStrategy
         foreach (Dice die in enemy.playerDice)
             if (die.diceValue > 3) bigCount++;
 
-        for (int i = 0; i < enemy.playedPanel.transform.childCount; i++)
+        int maxBothSidePlayedDice = enemy.playedPanel.transform.childCount < enemy.enemyPlayed.transform.childCount ? enemy.playedPanel.transform.childCount : enemy.enemyPlayed.transform.childCount;
+
+        for (int i = 0; i < maxBothSidePlayedDice; i++)
         {
             if (enemy.playedPanel.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue > 3) bigCountPlayed++;
             if (enemy.playedPanel.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue < enemy.enemyPlayed.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue) lost++;
         }
 
+        Debug.Log($"enemy lost: {lost}");
         bool playBig = bigCount <= enemy.playerDice.Count / 2;
 
-        if (bigCount + bigCountPlayed < 2) enemy.Forfeit();
-        if (lost == 2) enemy.Forfeit();
+        if (lost == 2 || bigCount + bigCountPlayed < 2) {
+            enemy.Forfeit();
+            chosenDice = null;
+            return;
+        }
 
         List<Dice> candidates = enemy.playerDice.FindAll(d => playBig ? d.diceValue > 3 : d.diceValue <= 3);
 
