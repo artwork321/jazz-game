@@ -12,7 +12,16 @@ public class Invert : PowerUp
     // Activate played dice and invert dice of a column if clicked
     protected override void ApplyEffect(Character calledPlayer)
     {
+
         Button[] playedDiceButtons = calledPlayer.playedPanel.GetComponentsInChildren<Button>();
+
+        if (playedDiceButtons.Length == 0) {
+            Debug.Log("No dice to invert");
+            isUsed = false;
+            return;
+        }
+
+        gm.uiManager.DisablePlayerRemainingDice(); // disable remaining dice
 
         for (int i = 0; i < playedDiceButtons.Length; i++)
         {

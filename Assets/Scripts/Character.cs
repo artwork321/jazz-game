@@ -30,15 +30,4 @@ public class Character : MonoBehaviour
         // temporarily switch turn here
         gm.SwitchTurn();
     }
-
-    // Remove all methods or effects associated with played dice
-    public void DisablePlayedDice() {
-        Button[] playerPlayedDice = playedPanel.GetComponentsInChildren<Button>();
-
-        for (int i = 0; i < playerPlayedDice.Length; i++) {
-            Button btn = playerPlayedDice[i];
-            btn.onClick.RemoveAllListeners();
-            btn.interactable = false;
-        }
-    }
 }
