@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    protected int cost;
+    public int cost;
     protected GameMan gm;
     public bool isUsed = false;
 
@@ -17,8 +17,11 @@ public abstract class PowerUp : MonoBehaviour
     {
         if (!CanActivate(calledPlayer)) return;
 
-        gm.DisablePowerUps(); // Disable all powerups if one has been selected
-        DeductCost(calledPlayer); // Execute the effect
+        gm.uiManager.DisablePowerUps(); // Disable all powerups if one has been selected
+        gm.uiManager.DisableForfeit();
+
+        // Execute the effect
+        DeductCost(calledPlayer); 
         ApplyEffect(calledPlayer);
     }
 
