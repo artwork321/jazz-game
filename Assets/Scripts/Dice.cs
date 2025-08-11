@@ -8,9 +8,12 @@ public class Dice : MonoBehaviour
     public int diceValue;
     public bool isEnemy = false;
     public Character player; // Owner of the die
+    private GameMan gm;
 
     void Awake()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameMan>();
+
         if (isEnemy)
         {
             playedPanel = GameObject.Find("EnemyPlayed");
@@ -55,8 +58,9 @@ public class Dice : MonoBehaviour
         playerInvertedDice.isEnemy = true; // Update property
         enemyInvertedDice.isEnemy = false;
 
-        player.DisablePlayedDice(); // Disable effect after finish
-        enemy.DisablePlayedDice();
+        gm.uiManager.DisablePlayerPlayedDice(); // Disable effect after finish
+        gm.uiManager.DisableEnemyPlayedDice();
+        gm.uiManager.EnablePlayerRemainingDice();
     }
 
     // Increase die's value by 1
@@ -64,7 +68,8 @@ public class Dice : MonoBehaviour
         diceValue += 1;
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
-        player.DisablePlayedDice();
+        gm.uiManager.DisablePlayerPlayedDice();
+        gm.uiManager.EnablePlayerRemainingDice();
     }
 
     // Reroll the die's value
@@ -72,6 +77,10 @@ public class Dice : MonoBehaviour
         diceValue = Random.Range(1, 7);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
-        player.DisablePlayedDice();
+        // remove this listener
+        gm.uiManager.RemoveAllDiceListeners();
+
+        // add play listener
+        gm.uiManager.AddDicePlayListener();
     }
 }

@@ -16,6 +16,14 @@ public class Upgrade : PowerUp
 
         Button[] playedDiceButtons = calledPlayer.playedPanel.GetComponentsInChildren<Button>();
 
+        if (playedDiceButtons.Length == 0) {
+            Debug.Log("No dice to upgrade");
+            isUsed = false;
+            return;
+        }
+
+        gm.uiManager.DisablePlayerRemainingDice(); // disable remaining dice
+
         for (int i = 0; i < playedDiceButtons.Length; i++)
         {
             Button btn = playedDiceButtons[i];
