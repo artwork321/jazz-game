@@ -78,9 +78,9 @@ public class Dice : MonoBehaviour
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diceValue.ToString();
 
         // remove this listener
-        gameObject.GetComponent<Button>().onClick.RemoveListener(RerollValue);
+        gm.uiManager.RemoveAllDiceListeners();
 
         // add play listener
-        gameObject.GetComponent<Button>().onClick.AddListener(ButtonPressed);
+        gm.uiManager.AddDicePlayListener();
     }
 }

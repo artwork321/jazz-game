@@ -220,7 +220,7 @@ public class GameMan : MonoBehaviour
 
         uiManager.EnablePowerUps();
 
-        uiManager.foifeitButton.GetComponent<Button>().interactable = true;
+        uiManager.EnableForfeit();
     }
 
 

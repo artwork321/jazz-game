@@ -36,12 +36,13 @@ public class UIManager : MonoBehaviour
 
     public void EnablePowerUps() {
         foreach (PowerUp skill in skillButtons) {
-            // Only show skills that haven't been used
-            if (skill.isUsed == false) {
-                Button skillBtn = skill.gameObject.GetComponent<Button>();
-                skillBtn.interactable = true;
-            }
+            Button skillBtn = skill.gameObject.GetComponent<Button>();
 
+            // Only show skills that haven't been used
+            if (skill.isUsed == false) 
+                skillBtn.interactable = true;
+            else
+                skillBtn.interactable = false;
         }
     }
 
@@ -79,6 +80,18 @@ public class UIManager : MonoBehaviour
         foreach (Dice die in gm.player.playerDice) {
             Button btn = die.gameObject.GetComponent<Button>();
             btn.interactable = true;
+        }
+    }
+
+    public void RemoveAllDiceListeners() {
+        foreach (Dice die in gm.player.playerDice) {
+            die.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+    }
+
+    public void AddDicePlayListener() {
+        foreach (Dice die in gm.player.playerDice) {
+            die.gameObject.GetComponent<Button>().onClick.AddListener(die.ButtonPressed);
         }
     }
 }
