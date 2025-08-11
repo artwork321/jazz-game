@@ -10,19 +10,10 @@ public class ViewTotal : PowerUp
         cost = 0;
     }
 
-    // Activate played dice and increase their value if clicked
+    // Show Enemy total value of dice
     protected override void ApplyEffect(Character calledPlayer)
     {
+        gm.uiManager.ShowTotal();
 
-        Button[] playedDiceButtons = calledPlayer.playedPanel.GetComponentsInChildren<Button>();
-
-        for (int i = 0; i < playedDiceButtons.Length; i++)
-        {
-            Button btn = playedDiceButtons[i];
-
-            btn.interactable = true;
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => btn.gameObject.GetComponent<Dice>().IncreaseValue());
-        }
     }
 }

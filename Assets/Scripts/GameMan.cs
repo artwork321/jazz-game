@@ -16,10 +16,7 @@ public class GameMan : MonoBehaviour
     public Character player;
     public Enemy enemyPlayer;
 
-    // gameplay-related UI components
-    public GameObject foifeitButton;
-    public GameObject oppTotalUI;
-    public PowerUp[] skillButtons;
+    public UIManager uiManager;
 
     private LevelMan lm;
 
@@ -95,7 +92,6 @@ public class GameMan : MonoBehaviour
             oppTotal += diceObject.diceValue; // store total value of all dice
         }
         enemyPlayer.diceTotal = oppTotal;
-        oppTotalUI.GetComponent<TextMeshProUGUI>().text = oppTotal.ToString();
 
         // Let Enemy start first for now
         playerTurn = false;
@@ -221,9 +217,9 @@ public class GameMan : MonoBehaviour
             btn.interactable = true;
         }
 
-        EnablePowerUps();
+        uiManager.EnablePowerUps();
 
-        foifeitButton.GetComponent<Button>().interactable = true;
+        uiManager.foifeitButton.GetComponent<Button>().interactable = true;
     }
 
 
@@ -237,31 +233,11 @@ public class GameMan : MonoBehaviour
             btn.interactable = false;
         }
 
-        DisablePowerUps();
+        uiManager.DisablePowerUps();
 
-        foifeitButton.GetComponent<Button>().interactable = false;
+        uiManager.foifeitButton.GetComponent<Button>().interactable = false;
 
         // fake some thinking time
         StartCoroutine(enemyPlayer.EnemyPlayWithDelay());
-    }
-
-
-    public void DisablePowerUps() {
-        foreach (PowerUp skill in skillButtons) {
-            Button skillBtn = skill.gameObject.GetComponent<Button>();
-            skillBtn.interactable = false;
-        }
-    }
-
-
-    public void EnablePowerUps() {
-        foreach (PowerUp skill in skillButtons) {
-            // Only show skills that haven't been used
-            if (skill.isUsed == false) {
-                Button skillBtn = skill.gameObject.GetComponent<Button>();
-                skillBtn.interactable = true;
-            }
-
-        }
     }
 }
