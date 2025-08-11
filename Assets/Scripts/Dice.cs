@@ -43,7 +43,10 @@ public class Dice : MonoBehaviour
 
 
     // Swap dice at idx in played dice from both players
-    public void InvertDice(int dieIdx, Enemy enemy, Character player) {
+    public void InvertDice(int dieIdx) {
+
+        Character player = gm.player;
+        Enemy enemy = gm.enemyPlayer;
 
         Debug.Log(dieIdx);
         Dice playerInvertedDice = player.playedPanel.GetComponentsInChildren<Dice>()[dieIdx];

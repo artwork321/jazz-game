@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public GameObject playerSlot;
 
     public GameObject enemyPlayed;
+    public int diceTotal;
     public GameMan gm;
 
     // Delegate forfeit process to game manager

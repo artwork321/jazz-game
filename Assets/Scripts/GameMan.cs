@@ -43,6 +43,9 @@ public class GameMan : MonoBehaviour
 
         // reset powerups
         uiManager.HideTotal();
+
+        // level up Enemy
+        enemyPlayer.SetStrategy(lm.GetCurrentLevel().enemyDifficulty);
     
         // reset dice
         NewMatch();
@@ -69,13 +72,17 @@ public class GameMan : MonoBehaviour
         enemyPlayer.playerDice.Clear();
 
         // spawn player's dice
+        int playerTotal = 0;
+
         for (int i = 0; i < 5; i++)
         {
             GameObject die = Instantiate(dicePrefab, player.playerSlot.transform);
             die.GetComponent<Dice>().isEnemy = false;
             die.GetComponent<Dice>().player = player;
             player.playerDice.Add(die.GetComponent<Dice>());
+            playerTotal += die.GetComponent<Dice>().diceValue;
         }
+        player.diceTotal = playerTotal;
 
         // spawn enemy's dice
         int oppTotal = 0;

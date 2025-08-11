@@ -30,7 +30,7 @@ public class Invert : PowerUp
 
             btn.interactable = true;
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => btn.gameObject.GetComponent<Dice>().InvertDice(idx, gm.enemyPlayer, gm.player));
+            btn.onClick.AddListener(() => btn.gameObject.GetComponent<Dice>().InvertDice(idx));
         }
     }
 }

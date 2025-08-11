@@ -104,6 +104,7 @@ public class Level
     public int lvl;            // level number
     public int dialogueIndex;  // starting dialogue index
     public AudioClip bgMusic;  // background music
+    public int enemyDifficulty; // 1 - easy, 2 - medium, 3 - hard
 
     // can also have more in regards to which powerups are available and stuff.
 }
