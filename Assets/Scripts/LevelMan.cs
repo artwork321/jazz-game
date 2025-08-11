@@ -32,7 +32,6 @@ public class LevelMan : MonoBehaviour
         // Trigger dialogue
         FindObjectOfType<Dialogue>().PlayLine(level.dialogueIndex);
 
-        Debug.Log("Started Level " + level.lvl);
     }
 
     public void GoToNextLevel()
@@ -54,5 +53,8 @@ public class Level
     public int lvl;            // level number
     public int dialogueIndex;  // starting dialogue index
     public AudioClip bgMusic;  // background music
+
+
+    // can also have more in regards to which powerups are available and stuff.
 }
 
