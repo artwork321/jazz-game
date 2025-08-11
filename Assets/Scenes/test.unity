@@ -2190,7 +2190,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1386014005}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2762,6 +2762,7 @@ GameObject:
   - component: {fileID: 1306738233}
   - component: {fileID: 1306738234}
   - component: {fileID: 1306738235}
+  - component: {fileID: 1306738236}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2797,9 +2798,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: 0
+  scoreManager: {fileID: 522674586}
   dicePrefab: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
-  playerSlot: {fileID: 0}
-  playedPanel: {fileID: 0}
+  player: {fileID: 1621920091}
+  enemyPlayer: {fileID: 421392512}
+  foifeitButton: {fileID: 1661938999}
+  oppTotalUI: {fileID: 1688795991}
+  skillButtons: []
 --- !u!114 &1306738235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2812,6 +2817,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6491a0dcdab264cc2974b6d6cc7a6c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels:
+  - lvl: 0
+    dialogueIndex: 0
+    bgMusic: {fileID: 0}
+  - lvl: 0
+    dialogueIndex: 0
+    bgMusic: {fileID: 0}
+  - lvl: 0
+    dialogueIndex: 0
+    bgMusic: {fileID: 0}
+  - lvl: 0
+    dialogueIndex: 0
+    bgMusic: {fileID: 0}
+  gm: {fileID: 0}
+--- !u!114 &1306738236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306738232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0b5c93b8b174f3cb9ecc846a5753d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - parts:
+    - dialogue sample
+    voice: []
+  dialogueText: {fileID: 0}
+  typingSpeed: 0.05
 --- !u!1001 &1488970111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3289,7 +3326,6 @@ Transform:
   m_Children:
   - {fileID: 320026163}
   - {fileID: 1935259977}
-  - {fileID: 1386014005}
   m_Father: {fileID: 930703546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1767690723
@@ -3906,3 +3942,4 @@ SceneRoots:
   - {fileID: 198912552}
   - {fileID: 1306738233}
   - {fileID: 522674587}
+  - {fileID: 1090169231}

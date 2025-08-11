@@ -21,9 +21,12 @@ public class GameMan : MonoBehaviour
     public GameObject oppTotalUI;
     public PowerUp[] skillButtons;
 
+    private LevelMan lm;
+
     void Start()
     {
         NewGame();
+        lm = gameObject.GetComponent<LevelMan>();
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class GameMan : MonoBehaviour
 
     // Game = first to 12 points win the game
     // Match = the actual play with all five dice
-    void NewGame()
+    public void NewGame()
     {
         scoreManager.resetPlayerGamePts();
         scoreManager.resetOpponentGamePts();
@@ -142,13 +145,17 @@ public class GameMan : MonoBehaviour
 
 
     public void EndGame() {
-        if (scoreManager.isEnemyWinTheGame()) {
+        if (scoreManager.isEnemyWinTheGame())
+        {
             Debug.Log("Opponent Wins the Game");
-            NewGame();
+            // NewGame();
+            lm.RepeatLevel();
         }
-        else if (scoreManager.isPlayerWinTheGame()) {
+        else if (scoreManager.isPlayerWinTheGame())
+        {
             Debug.Log("Player Wins the Game");
             NewGame();
+            lm.GoToNextLevel();
         }
     }
 

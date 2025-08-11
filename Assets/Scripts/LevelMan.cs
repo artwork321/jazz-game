@@ -4,7 +4,13 @@ using UnityEngine;
 public class LevelMan : MonoBehaviour
 {
     public List<Level> levels;
-    private int currentLevelIndex = -1; 
+    private int currentLevelIndex = -1;
+    public GameMan gm;
+
+    public void Start()
+    {
+        gm = gameObject.GetComponent<GameMan>();
+    }
 
     public void StartNewLevel(int levelIndex)
     {
@@ -19,6 +25,7 @@ public class LevelMan : MonoBehaviour
         Level level = levels[levelIndex];
 
         // Example: Play music for this level
+        /*
         if (level.bgMusic != null)
         {
             AudioSource audioSource = GetComponent<AudioSource>();
@@ -28,15 +35,21 @@ public class LevelMan : MonoBehaviour
                 audioSource.Play();
             }
         }
+        */
 
         // Trigger dialogue
         FindObjectOfType<Dialogue>().PlayLine(level.dialogueIndex);
-
+        gm.NewGame();
     }
 
     public void GoToNextLevel()
     {
         StartNewLevel(currentLevelIndex + 1);
+    }
+
+    public void RepeatLevel()
+    {
+        StartNewLevel(currentLevelIndex);
     }
 
     public Level GetCurrentLevel()
@@ -53,7 +66,6 @@ public class Level
     public int lvl;            // level number
     public int dialogueIndex;  // starting dialogue index
     public AudioClip bgMusic;  // background music
-
 
     // can also have more in regards to which powerups are available and stuff.
 }
