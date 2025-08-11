@@ -41,6 +41,7 @@ public class GameMan : MonoBehaviour
         scoreManager.UpdateScorePanel();
 
         // reset powerups
+        uiManager.HideTotal();
     
         // reset dice
         NewMatch();

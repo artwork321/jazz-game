@@ -14,6 +14,10 @@ public class UIManager : MonoBehaviour
         oppTotalUI.GetComponent<TextMeshProUGUI>().text = gm.enemyPlayer.diceTotal.ToString();
     }
 
+    public void HideTotal() {
+        oppTotalUI.GetComponent<TextMeshProUGUI>().text = "?";
+    }
+
     public void DisablePowerUps() {
         foreach (PowerUp skill in skillButtons) {
             Button skillBtn = skill.gameObject.GetComponent<Button>();
