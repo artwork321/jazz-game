@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class LevelMan : MonoBehaviour
 {
     public List<Level> levels;
-    private int currentLevelIndex = -1;
+    private int currentLevelIndex = 0;
+    public CanvasGroup fadePanel;
+    public float fadeDuration = 1f;
     public GameMan gm;
 
     public void Start()
@@ -18,8 +22,16 @@ public class LevelMan : MonoBehaviour
         {
             // either we start boss level -> maybe we put this on a new scene or smth im not sure
             // or this will trigger the end of the game maybe.
-            return;
         }
+        StartCoroutine(LevelTransition(levelIndex));
+    }
+
+    private IEnumerator LevelTransition(int levelIndex) 
+    {
+        // can add the tutorial for new powerups here
+        fadePanel.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Let's play level " + levelIndex.ToString();
+        yield return StartCoroutine(FadeOut());
+
 
         currentLevelIndex = levelIndex;
         Level level = levels[levelIndex];
@@ -37,9 +49,35 @@ public class LevelMan : MonoBehaviour
         }
         */
 
+        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(FadeIn());
+        gm.NewGame();
         // Trigger dialogue
         FindObjectOfType<Dialogue>().PlayLine(level.dialogueIndex);
-        gm.NewGame();
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadePanel.alpha = t / fadeDuration;
+            yield return null;
+        }
+        fadePanel.alpha = 1;
+    }
+
+    private IEnumerator FadeIn()
+    {
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadePanel.alpha = 1 - (t / fadeDuration);
+            yield return null;
+        }
+        fadePanel.alpha = 0;
     }
 
     public void GoToNextLevel()

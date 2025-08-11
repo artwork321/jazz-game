@@ -25,8 +25,9 @@ public class GameMan : MonoBehaviour
 
     void Start()
     {
-        NewGame();
         lm = gameObject.GetComponent<LevelMan>();
+        lm.RepeatLevel();
+
     }
 
     void Update()

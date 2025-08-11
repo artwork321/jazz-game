@@ -19,7 +19,6 @@ public class Dialogue : MonoBehaviour
 
         // for testing, otherwise usually the play line should be called at the start of rounds, or  
         // other trigger moments, e.g reactions to wins or losses
-        PlayLine(0); 
     }
 
     public void PlayLine(int lineIndex)
