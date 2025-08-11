@@ -2162,6 +2162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306738233}
   - component: {fileID: 1306738234}
+  - component: {fileID: 1306738235}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2196,9 +2197,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7b9192d493e4217b2d631160042d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurn: 0
   dicePrefab: {fileID: 6874720041594270292, guid: 383f7ed7d02534253bacfcff236eaafd, type: 3}
   playerSlot: {fileID: 0}
   playedPanel: {fileID: 0}
+--- !u!114 &1306738235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306738232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6491a0dcdab264cc2974b6d6cc7a6c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1488970111
 PrefabInstance:
   m_ObjectHideFlags: 0
