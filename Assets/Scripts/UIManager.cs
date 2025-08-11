@@ -43,4 +43,15 @@ public class UIManager : MonoBehaviour
             btn.interactable = false;
         }
     }
+
+    // Remove all methods or effects associated with played dice of enemy
+    public void DisableEnemyPlayedDice() {
+        Button[] playerPlayedDice = gm.enemyPlayer.playedPanel.GetComponentsInChildren<Button>();
+
+        for (int i = 0; i < playerPlayedDice.Length; i++) {
+            Button btn = playerPlayedDice[i];
+            btn.onClick.RemoveAllListeners();
+            btn.interactable = false;
+        }
+    }
 }

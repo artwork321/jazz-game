@@ -59,7 +59,7 @@ public class Dice : MonoBehaviour
         enemyInvertedDice.isEnemy = false;
 
         gm.uiManager.DisablePlayerPlayedDice(); // Disable effect after finish
-        gm.uiManager.DisablePlayerPlayedDice();
+        gm.uiManager.DisableEnemyPlayedDice();
     }
 
     // Increase die's value by 1
