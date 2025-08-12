@@ -597,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &86532659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.68235296}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -667,7 +667,7 @@ MonoBehaviour:
         m_MethodName: ActivatePowerUp
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1621920091}
           m_ObjectArgumentAssemblyTypeName: Character, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1089,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &320026163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.68235296}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2219,30 +2219,36 @@ MonoBehaviour:
     - "Whose soul are we betting on? Ah, a mortal gambler, got too greedy\u2026 lost
       a wager\u2026 "
     - Now he's paying out, ironic.
-    voice: []
+    voice:
+    - {fileID: 8300000, guid: 1a802954d6bee4e2086149bc1d543c77, type: 3}
   - parts:
     - This one sold his soul to save his daughter from a cruel fate, how noble.
     - 'Who will win this one? '
-    voice: []
+    voice:
+    - {fileID: 8300000, guid: f90a3c18c2bfb4db991a2280774857de, type: 3}
   - parts:
     - He promised salvation, you promised him power. forgot to ask who he was working
       for didn't he?
-    voice: []
+    voice:
+    - {fileID: 8300000, guid: 25a6a05cada914bbeac5d239d3ded548, type: 3}
   - parts:
     - "That\u2019s odd, three games in a row you've won\u2026 you're not cheating
       are you?"
     - This one wished for wealth, not very creative. Most mortals aren't
-    voice: []
+    voice:
+    - {fileID: 8300000, guid: aa51377ee20084fa491783b86433d2ca, type: 3}
   - parts:
     - 'A former king of a mortal kingdom, fancied himself to cheat death. I guess
       in a way he did. '
-    voice: []
+    voice:
+    - {fileID: 8300000, guid: d9329fdcef5424c2bbc0b8341f8db543, type: 3}
   - parts:
-    - Forfeit? Smart devil.
+    - Forfeiting are you? Smart devil.
     voice:
     - {fileID: 8300000, guid: 8e7597e358eb64af3940ad87ff5c650c, type: 3}
   dialogueText: {fileID: 1170099941}
   typingSpeed: 0.05
+  dialogueAS: {fileID: 0}
 --- !u!4 &576233668
 Transform:
   m_ObjectHideFlags: 0
@@ -2869,6 +2875,7 @@ RectTransform:
   - {fileID: 1661939000}
   - {fileID: 1165467869}
   - {fileID: 674180656}
+  - {fileID: 1109638918}
   - {fileID: 1051391640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3104,6 +3111,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051391639}
   m_CullTransparentMesh: 1
+--- !u!1 &1109638917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109638918}
+  - component: {fileID: 1109638920}
+  - component: {fileID: 1109638919}
+  - component: {fileID: 1109638921}
+  m_Layer: 5
+  m_Name: EnemySprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1109638918
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109638917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.41, y: 2.41, z: 2.41}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 930703546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4, y: 63}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1109638919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109638917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -487050749312343426, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1109638920
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109638917}
+  m_CullTransparentMesh: 1
+--- !u!95 &1109638921
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109638917}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e298568ec94e541ab84567f34f1d8e9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1119866465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,8 +3470,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16.8
-  m_fontSizeBase: 16.8
+  m_fontSize: 18.42
+  m_fontSizeBase: 18.42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3864,29 +3969,50 @@ MonoBehaviour:
     dialogueIndex: 0
     bgMusic: {fileID: 8300000, guid: 4208d2648ad1947b78d7e3a67077bab0, type: 3}
     enemyDifficulty: 1
+    levelDescription: Soul 1- The Gambler
+    enemySprite: {fileID: -6012902116307831375, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
   - lvl: 1
     dialogueIndex: 1
     bgMusic: {fileID: 8300000, guid: 9018ad6cc96c144ba850253b8e683124, type: 3}
-    enemyDifficulty: 1
+    enemyDifficulty: 2
+    levelDescription: 'Soul 2 - The Father '
+    enemySprite: {fileID: -6012902116307831375, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
   - lvl: 2
     dialogueIndex: 2
     bgMusic: {fileID: 8300000, guid: 9018ad6cc96c144ba850253b8e683124, type: 3}
     enemyDifficulty: 2
+    levelDescription: 'Soul 3 - The Cult Leader '
+    enemySprite: {fileID: -1579003219138025860, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
   - lvl: 3
     dialogueIndex: 3
     bgMusic: {fileID: 8300000, guid: 4208d2648ad1947b78d7e3a67077bab0, type: 3}
-    enemyDifficulty: 2
+    enemyDifficulty: 3
+    levelDescription: Soul 4 - The Beggar
+    enemySprite: {fileID: 658518330013730904, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
   - lvl: 3
     dialogueIndex: 4
     bgMusic: {fileID: 8300000, guid: 9018ad6cc96c144ba850253b8e683124, type: 3}
     enemyDifficulty: 3
+    levelDescription: Soul 5 - The King
+    enemySprite: {fileID: 2485890105964676644, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
   - lvl: 3
     dialogueIndex: 0
     bgMusic: {fileID: 8300000, guid: 06746999965c348cbbdcc5732ff3857f, type: 3}
-    enemyDifficulty: 3
+    enemyDifficulty: 4
+    levelDescription: 'Soul 6 - Bossfight '
+    enemySprite: {fileID: 4450768826143417004, guid: 3e0cfdf2b3450484bb14f9108ee6c5c2, type: 3}
+  anim:
+  - {fileID: 2485890105964676644, guid: acbe2179e11284d0eb45001fc93eaab8, type: 3}
+  - {fileID: -1824456827928865393, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
+  - {fileID: 1015230809193277530, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
+  - {fileID: -1232516382169488593, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
+  - {fileID: 1624642559029630675, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
+  - {fileID: -413004261960428481, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
+  - {fileID: 7030732426900171235, guid: 407f77204ce7c44f18358bd6f2b029a0, type: 3}
   fadePanel: {fileID: 1051391641}
   fadeDuration: 1
   gm: {fileID: 0}
+  enemySprite: {fileID: 0}
 --- !u!82 &1306738237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4003,7 +4129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323405344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4049,7 +4175,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.68235296}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4834,7 +4960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5014,7 +5140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1935259977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5060,7 +5186,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.68235296}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

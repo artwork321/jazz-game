@@ -46,11 +46,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ResetIsUsed(int level)
+    {
+        int disable = Mathf.Max(0, 3 - level);
+        foreach (PowerUp skill in skillButtons)
+        {
+            Button skillBtn = skill.gameObject.GetComponent<Button>();
+            skill.isUsed = false;
+            skillBtn.interactable = true;
+            skillBtn.gameObject.SetActive(true);
+        }
+        foreach (PowerUp skill in skillButtons)
+        {
+            if (disable == 0) break;
+            Button skillBtn = skill.gameObject.GetComponent<Button>();
+            skill.isUsed = true;
+            skillBtn.gameObject.SetActive(false);
+            disable -= 1;
+        }
+    }
+
     // Remove all methods or effects associated with played dice of player
-    public void DisablePlayerPlayedDice() {
+    public void DisablePlayerPlayedDice()
+    {
         Button[] playerPlayedDice = gm.player.playedPanel.GetComponentsInChildren<Button>();
 
-        for (int i = 0; i < playerPlayedDice.Length; i++) {
+        for (int i = 0; i < playerPlayedDice.Length; i++)
+        {
             Button btn = playerPlayedDice[i];
             btn.onClick.RemoveAllListeners();
             btn.interactable = false;

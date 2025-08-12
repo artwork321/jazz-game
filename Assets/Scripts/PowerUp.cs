@@ -43,7 +43,7 @@ public abstract class PowerUp : MonoBehaviour
     // Reduce player's points according to the power up cost
     protected void DeductCost(Character calledPlayer)
     {
-        gm.scoreManager.IncreasePtsGameByCharacter(-cost, calledPlayer);
+        gm.scoreManager.IncreasePtsGameByCharacter(-1*cost, calledPlayer);
         gm.scoreManager.UpdateScorePanel();
     }
 

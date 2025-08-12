@@ -58,6 +58,15 @@ public class EnemyStrategyB : EnemyStrategy
         List<Dice> candidates = enemy.playerDice.FindAll(d => playBig ? d.diceValue > 3 : d.diceValue <= 3);
 
         if (candidates.Count == 0) candidates = enemy.playerDice;
+        int lost = 0;
+        int cnt = enemy.playedPanel.transform.childCount;
+        for (int i = 0; i < cnt; i++)
+            if (enemy.playedPanel.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue < enemy.enemyPlayed.transform.GetChild(i).gameObject.GetComponent<Dice>().diceValue) lost++;
+
+        if (lost >= 2 && cnt != 5)
+        {
+            enemy.Forfeit();
+        }
 
         Dice playedDie = candidates[Random.Range(0, candidates.Count)];
         Debug.Log($"Enemy chose to play {playedDie.diceValue}");

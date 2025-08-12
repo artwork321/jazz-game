@@ -7,16 +7,17 @@ public class Dialogue : MonoBehaviour
 {
     public List<DialogueLine> lines;
     public TextMeshProUGUI dialogueText;
-    public float typingSpeed = 0.05f;  
+    public float typingSpeed = 0.03f;  
 
     private int currPartIndex = 0;
     private DialogueLine currLine;
     private Coroutine typingEffect;
+    public AudioSource dialogueAS;
 
     void Start()
     {
         dialogueText = GameObject.Find("dialogue").GetComponent<TextMeshProUGUI>();
-
+        dialogueAS = GetComponent<AudioSource>();
         // for testing, otherwise usually the play line should be called at the start of rounds, or  
         // other trigger moments, e.g reactions to wins or losses
     }
@@ -32,10 +33,11 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator Type()
     {
+        dialogueAS.clip = currLine.voice[0];
+        dialogueAS.Play();
         while (currPartIndex < currLine.parts.Count)
         {
             dialogueText.text = "";
-
             // todo: play the audio voice lines
             foreach (char c in currLine.parts[currPartIndex])
             {
@@ -44,7 +46,7 @@ public class Dialogue : MonoBehaviour
             }
 
             // for now, later will change depending on when the voice line ends.
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             currPartIndex++;
         }

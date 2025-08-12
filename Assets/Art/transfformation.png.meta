@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 643bc76374a734d7ca0cb000bb2a86c0
+guid: 407f77204ce7c44f18358bd6f2b029a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 39516445742236537
-    second: dice_0
+      213: -1824456827928865393
+    second: transfformation_0
   - first:
-      213: 2376305099863235458
-    second: dice_1
+      213: 1015230809193277530
+    second: transfformation_1
   - first:
-      213: 1813239885723335896
-    second: dice_2
+      213: -413004261960428481
+    second: transfformation_2
   - first:
-      213: -7464760887336577109
-    second: dice_3
+      213: -1232516382169488593
+    second: transfformation_3
   - first:
-      213: -8866378825118310145
-    second: dice_4
+      213: 7030732426900171235
+    second: transfformation_4
   - first:
-      213: -3287765887320952711
-    second: dice_5
+      213: 1624642559029630675
+    second: transfformation_5
+  - first:
+      213: 4156530222883568079
+    second: transfformation_6
+  - first:
+      213: -6905073774141385639
+    second: transfformation_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,133 +134,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dice_0
+      name: transfformation_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 644
-        width: 108
-        height: 104
+        x: 169
+        y: 1706
+        width: 469
+        height: 532
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 973804f7ff36c8000800000000000000
-      internalID: 39516445742236537
+      spriteID: f85934f6e2a3ea6e0800000000000000
+      internalID: -1824456827928865393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dice_1
+      name: transfformation_1
       rect:
         serializedVersion: 2
-        x: 394
-        y: 648
-        width: 108
-        height: 104
+        x: 999
+        y: 1693
+        width: 497
+        height: 532
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28b1c4be5e45af020800000000000000
-      internalID: 2376305099863235458
+      spriteID: a586ff2ca03d61e00800000000000000
+      internalID: 1015230809193277530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dice_2
+      name: transfformation_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 438
-        width: 108
-        height: 104
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1392
+        y: 864
+        width: 1048
+        height: 703
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.5000002}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8dcfb11b11ce92910800000000000000
-      internalID: 1813239885723335896
+      spriteID: f34502bdfc6b44af0800000000000000
+      internalID: -413004261960428481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dice_3
+      name: transfformation_3
       rect:
         serializedVersion: 2
-        x: 397
-        y: 447
-        width: 108
-        height: 104
+        x: 1857
+        y: 1662
+        width: 541
+        height: 602
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba7d211e587d76890800000000000000
-      internalID: -7464760887336577109
+      spriteID: f2320fc61e835eee0800000000000000
+      internalID: -1232516382169488593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dice_4
+      name: transfformation_4
       rect:
         serializedVersion: 2
-        x: 55
-        y: 229
-        width: 108
-        height: 104
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 69
+        y: 37
+        width: 1252
+        height: 741
+      alignment: 9
+      pivot: {x: 0.51299405, y: 0.8457819}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff027c44f6b44f480800000000000000
-      internalID: -8866378825118310145
+      spriteID: 3e9643054ed229160800000000000000
+      internalID: 7030732426900171235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dice_5
+      name: transfformation_5
       rect:
         serializedVersion: 2
-        x: 400
-        y: 245
-        width: 108
-        height: 104
+        x: 134
+        y: 863
+        width: 760
+        height: 686
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 970769548528f52d0800000000000000
-      internalID: -3287765887320952711
+      spriteID: 3d651f9bcc3eb8610800000000000000
+      internalID: 1624642559029630675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transfformation_6
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 705
+        width: 194
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc976292736fea930800000000000000
+      internalID: 4156530222883568079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transfformation_7
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 390
+        width: 281
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 954df60bcff3c20a0800000000000000
+      internalID: -6905073774141385639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transfformation_8
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 477
+        width: 463
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41690463f6db435794a105b222f06a4
+      internalID: -1996987101
       vertices: []
       indices: 
       edges: []
@@ -263,7 +335,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c766cada069c746ed97ecf12cf87d115
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +345,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dice_0: 39516445742236537
-      dice_1: 2376305099863235458
-      dice_2: 1813239885723335896
-      dice_3: -7464760887336577109
-      dice_4: -8866378825118310145
-      dice_5: -3287765887320952711
+      transfformation_8: -1996987101
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -38,7 +38,7 @@ public class GameMan : MonoBehaviour
 
     // Game = first to 12 points win the game
     // Match = the actual play with all five dice
-    public void NewGame()
+    public void NewGame(int lvl)
     {   
         // reset points
         scoreManager.resetPlayerGamePts();
@@ -47,6 +47,7 @@ public class GameMan : MonoBehaviour
 
         // reset powerups
         uiManager.HideTotal();
+        uiManager.ResetIsUsed(lvl);
 
         // level up Enemy
         enemyPlayer.SetStrategy(lm.GetCurrentLevel().enemyDifficulty);
@@ -66,7 +67,7 @@ public class GameMan : MonoBehaviour
         // clear played dice
         foreach (Transform child in player.playedPanel.transform) Destroy(child.gameObject);
         foreach (Transform child in enemyPlayer.playedPanel.transform) Destroy(child.gameObject);
-
+        uiManager.HideTotal();
         // clear slots
         foreach (Transform child in player.playerSlot.transform) Destroy(child.gameObject);
         foreach (Transform child in enemyPlayer.playerSlot.transform) Destroy(child.gameObject);

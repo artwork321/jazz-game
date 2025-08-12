@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1942d09492cf34aa1aa7294c9e910317
+guid: 3e0cfdf2b3450484bb14f9108ee6c5c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1247860929506349424
-    second: jazz game bg evil_0
+      213: 4450768826143417004
+    second: demon evil2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jazz game bg evil_0
+      name: demon evil2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1600
-        height: 900
+        x: 170
+        y: 182
+        width: 1252
+        height: 726
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 071905867ea415110800000000000000
-      internalID: 1247860929506349424
+      spriteID: ca229ab8aae44cd30800000000000000
+      internalID: 4450768826143417004
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      jazz game bg evil_0: 1247860929506349424
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
